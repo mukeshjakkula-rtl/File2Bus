@@ -1,3 +1,5 @@
+// this apb is modified according to the design requirements
+
 module apb_slave#(parameter DATA_WIDTH = 16,
                             MEM_DEPTH = 1024,
                            // ADDR_WIDTH = $clog2(MEM_DEPTH),
