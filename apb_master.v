@@ -63,7 +63,7 @@ apb_states state;
 		paddr <= paddr_in;
 		pwdata <= pwdata_in;
                 ready <= 1'b1;
-                if(psel_d_out == 4'b000) state <= SETUP;
+		  if(psel_d_out == 4'b000) state <= IDLE;
 		else state <= ACCESS;
 	  end //setup
 
