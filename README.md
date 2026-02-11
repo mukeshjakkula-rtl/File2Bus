@@ -52,4 +52,6 @@ The project has been upgraded from a single-stream bridge to a **Dual-Source Dat
 | **Buffer Type** | Dual Synchronous FIFOs |
 | **Bus Protocol** | AMBA 3 APB |
 
+![Notes_260211_094620](https://github.com/user-attachments/assets/2e0a7916-1357-45da-99bd-262813c7b700)
+
 ---
