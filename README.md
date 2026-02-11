@@ -24,3 +24,32 @@
 4.  **APB Slave:** The end-point destination that receives and acknowledges the data transfer.
 
 ![Notes_260208_200046](https://github.com/user-attachments/assets/2860a07a-bae6-4f32-a1e1-d3996c672ccd)
+
+---
+
+## Recent Update: Multi-Source Data Fusion
+
+The project has been upgraded from a single-stream bridge to a **Dual-Source Data Processing Pipeline**. It now synchronizes data from two different file formats, performs hardware-level arithmetic, and transmits the computed results via APB.
+
+### New Features
+* **Dual-Stream Parsing:** Simultaneous ingestion of `.txt` (Binary) and `.csv` (Data) files.
+* **Hardware Arithmetic:** Integrated a **Ripple Carry Adder (RCA)** to perform real-time data fusion.
+* **Bit-Slicing Logic:** Logic to extract specific bit-fields from the binary stream before addition.
+* **Multi-FIFO Synchronization:** Dual-buffer architecture to decouple independent file-reading rates from the processing core.
+
+
+
+### Updated Data Flow
+1. **Extraction:** `File_Reader_A` (.txt) and `File_Reader_B` (.csv) push data into independent Synchronous FIFOs.
+2. **Processing:** The system **bit-slices** the binary data and feeds it into the **Ripple Carry Adder** along with the CSV data.
+3. **Transmission:** The **APB Master** fetches the *summation result* from the adder and executes the standard 9-cycle APB write transaction.
+
+### Technical Specs (Updated)
+| Feature | Specification |
+| :--- | :--- |
+| **Input Sources** | 1x Binary (.txt), 1x Spreadsheet (.csv) |
+| **Arithmetic Unit** | Parameterized Ripple Carry Adder |
+| **Buffer Type** | Dual Synchronous FIFOs |
+| **Bus Protocol** | AMBA 3 APB |
+
+---
